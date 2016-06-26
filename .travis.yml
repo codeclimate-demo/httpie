@@ -1,11 +1,9 @@
-# https://travis-ci.org/jkbrzt/httpie
+addons:
+  code_climate:
+    repo_token: 31b1d4016ea2c5a825f57bea4460a7b07dfe9685c4101f2011585226061b9208
 sudo: false
 os:
   - linux
-  # - osx
-env:
-  global:
-    - NEWEST_PYTHON=3.4
 language: python
 python:
   - 2.6
@@ -13,8 +11,8 @@ python:
   - pypy
   - 3.3
   - 3.4
-  - pypy3
 script:
   - make
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == $NEWEST_PYTHON ]]; then pip install python-coveralls && coveralls; fi
+  - pip install codeclimate-test-reporter
+  - codeclimate-test-reporter
